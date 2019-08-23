@@ -6,16 +6,14 @@ const geocode = require('../utils/geocode')
 const forecast = require('../utils/forecast')
 
 
-
-console.log(__dirname)
-console.log(path.join(__dirname,'../public'))
+const app = express() //returns the entire app and methods can be used to modiify
+const port = process.env.PORT || 3000
 
 //define paths for express config
 const publicDirectoryPath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
 
-const app = express() //returns the entire app and methods can be used to modiify
 
 //Setup handlebars engine and views location
 app.set('view engine','hbs')
@@ -118,6 +116,6 @@ app.get('*', (req,res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log("Server serving on port 3000")
+app.listen(port, () => {
+    console.log("Server serving on port "+ port)
 })
